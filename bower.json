@@ -1,0 +1,20 @@
+{
+  "name": "ninja",
+  "version": "0.0.0",
+  "authors": [
+    "Grégoire Audoux <projects@gregoire-audoux.fr>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.0.4"
+  }
+}
