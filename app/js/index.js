@@ -17,6 +17,8 @@ function preload() {
 var map, layer, tiles, player, cursors;
 function create() {
     
+    game.stage.backgroundColor = 0x000000;
+    
     game.physics.startSystem(Phaser.Physics.NINJA);
 
 
@@ -29,11 +31,11 @@ function create() {
 
     //  Creates a layer from the World1 layer in the map data.
     //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
-    layer = map.createLayer('ninja');
+    layer = map.createLayer('ninja_layer');
     
     var slopMap = [];
-    for (var i = 0; i<= 32; i++) {
-        slopMap.push(i);   
+    for (var i = 1; i<= 34; i++) {
+        slopMap[i] = i-1;   
     }
     tiles = game.physics.ninja.convertTilemap(map, layer, slopMap);
     
@@ -44,6 +46,8 @@ function create() {
     game.physics.ninja.enableCircle(player, player.width / 2);
     
     cursors = game.input.keyboard.createCursorKeys();
+    
+    
 
 }
 
