@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "phaser": "~2.0.4"
+    "phaser": "~2.0.4",
+    "requirejs": "~2.1.14"
   }
 }
