@@ -28,7 +28,7 @@ define(function worldCreateFactory() {
 
 
         state.player = game.add.sprite(75, 100, 'player');
-        game.physics.ninja.enableCircle(state.player, state.player.width / 2);
+        game.physics.ninja.enableAABB(state.player);
 
         state.cursors = game.input.keyboard.createCursorKeys();
     }

@@ -1,9 +1,12 @@
 define([
     'ninja/loader/assets',
     'ninja/worldCreate',
-    'ninja/gameUpdate'
+    'ninja/gameUpdate',
+    'lib/phaser/phaser'
 ], function(assetsLoader, worldCreate, gameUpdate) {
 
+    
+    
     var state = {}
 
     var game = new Phaser.Game(1280, 704, Phaser.AUTO, 'ninja-game', {

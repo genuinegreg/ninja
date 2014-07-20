@@ -1,8 +1,9 @@
 define(function gameUpdateFactory() {
     function gameUpdate(game, state) {
+        
         for (var i = 0; i < state.tiles.length; i++)
         {
-            state.player.body.circle.collideCircleVsTile(state.tiles[i].tile);
+            state.player.body.aabb.collideAABBVsTile(state.tiles[i].tile);
 
         }
 
