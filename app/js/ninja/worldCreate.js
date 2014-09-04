@@ -29,8 +29,8 @@ define(function worldCreateFactory() {
 
         state.player = game.add.sprite(75, 100, 'player');
         game.physics.ninja.enableAABB(state.player);
-
-        state.cursors = game.input.keyboard.createCursorKeys();
+        
+        state.player.body.bounce = 0;
     }
 
     return worldCreate;
