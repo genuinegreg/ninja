@@ -9,9 +9,7 @@ define(function controlsFactory() {
         var player = state.player;
         var sword = state.sword;
 
-        // physics tweek
 
-        // update friction if touching left of right
         if (player.body.touching.left || player.body.touching.right) {
             player.body.friction = 0.25;
         }
@@ -19,8 +17,9 @@ define(function controlsFactory() {
             player.body.friction = 0.25;
         }
 
-        // jump on keyup and (touching down or high jump)
-        if (player.body.touching.down && 
+        if ((player.body.touching.down ||
+            player.body.touching.left || 
+            player.body.touching.right )&& 
             (cursors.up.isDown)) {
 
             player.body.moveUp(400);

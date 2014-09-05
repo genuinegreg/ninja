@@ -3,8 +3,8 @@ define(function worldCreateFactory() {
 
     function worldCreate(game, state) {
         game.stage.backgroundColor = 0x000000;
-
         game.physics.startSystem(Phaser.Physics.NINJA);
+        game.physics.ninja.gravity = 0.5;
 
 
         //  The 'mario' key here is the Loader key given in game.load.tilemap
