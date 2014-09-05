@@ -2,8 +2,12 @@ define(function controlsFactory() {
 
     var highJump = false;
 
-    function controls(player, cursors) {
+    function controls(game, state) {
 
+        var cursors = game.input.keyboard.createCursorKeys();
+
+        var player = state.player;
+        var sword = state.sword;
 
         // physics tweek
 
@@ -14,8 +18,6 @@ define(function controlsFactory() {
         else {
             player.body.friction = 0.25;
         }
-
-
 
         // jump on keyup and (touching down or high jump)
         if (player.body.touching.down && 
@@ -43,6 +45,21 @@ define(function controlsFactory() {
                 player.body.moveRight(10);
             }
         }
+
+        if (game.input.activePointer.isDown)
+        {
+            sword.rotation = 0;
+            sword.x = player.x + 10;
+            sword.y = player.y - 25;
+        }
+        else
+        {
+            sword.rotation = -50;
+            sword.x = player.x + 10;
+            sword.y = player.y - 25;
+        }
+
+
     }
 
     return controls;

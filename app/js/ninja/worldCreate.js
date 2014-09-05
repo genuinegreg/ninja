@@ -28,6 +28,8 @@ define(function worldCreateFactory() {
 
 
         state.player = game.add.sprite(75, 100, 'player');
+        state.sword = game.add.sprite(75, 100, 'sword');
+
         game.physics.ninja.enableAABB(state.player);
         
         state.player.body.bounce = 0;

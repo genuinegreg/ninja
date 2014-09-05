@@ -8,6 +8,7 @@ define([
     
     
     var state = {}
+    
 
     var game = new Phaser.Game(1280, 704, Phaser.AUTO, 'ninja-game', {
         preload: function () {
@@ -20,6 +21,9 @@ define([
             gameUpdate(game, state);
         }
     });
+
+    _game = game;
+    _state = state;
 
     
 
