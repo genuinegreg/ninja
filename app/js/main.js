@@ -1,13 +1,13 @@
 requirejs.config({
     baseUrl: 'js',
     paths: {
-        lib: '../bower_components'
+        lib: '../bower_components',
+        vendors: '../vendors'
     }
 });
 
 // Start the main app logic.
 requirejs(
-    ['lib/phaser/phaser', 
-     'ninja/index'],
+    ['ninja/index'],
     function   (phaser, index) {
     });

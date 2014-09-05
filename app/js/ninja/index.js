@@ -2,7 +2,7 @@ define([
     'ninja/loader/assets',
     'ninja/worldCreate',
     'ninja/gameUpdate',
-    'lib/phaser/phaser'
+    'vendors/phaser'
 ], function(assetsLoader, worldCreate, gameUpdate) {
 
     
