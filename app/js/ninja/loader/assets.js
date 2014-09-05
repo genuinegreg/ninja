@@ -13,6 +13,9 @@ define(function assetsLoaderFactory() {
 
         game.load.image('player', 'assets/ninja-white-32x45.png');
 
+        game.load.image('sword', 'assets/pixel_sword.png');
+
+
 
     }
     return assetsLoader;
