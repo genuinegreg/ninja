@@ -1,16 +1,26 @@
 define(
     
 	[
-        'ninja/ninja_physic/ninja_physic',
-        'ninja/ninja_control/ninja_control'
+        'ninja/ninja_state/ninja_state',
+        'ninja/ninja_physic/ninja_physic'
     ],
-    function (physic, control) 
+    function (state, ninja_physic) 
     {
  
         
         function Player()
         {
-            // contructeur   
+            var player = state.game.add.sprite(75, 100, 'player');
+            var sword = state.game.add.sprite(75, 100, 'sword');
+            
+            state.maplayer = state.map.createLayer('ninja_layer');
+            
+            state.game.physics.ninja.enableAABB(player);
+            
+            player.body.bounce = 0;
+            
+            state.players.push(player);
+            
         }
  
         Player.prototype.methode1 = function() {
@@ -22,10 +32,10 @@ define(
  
         }
         
+        state.players = [];
         
-        return 
-        {
-            createPlayer : function() { return new Player() }
-        }
+        return {
+            createPlayer:function(){return Player(); }
+        };
     }
 );
