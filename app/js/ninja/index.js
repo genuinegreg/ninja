@@ -1,24 +1,20 @@
 define([
-    'ninja/loader/assets',
+    'ninja/ninja_state/ninja_state',
+    'ninja/ninja_asset/ninja_asset',
     'ninja/worldCreate',
     'ninja/gameUpdate',
     'vendors/phaser'
-], function(assetsLoader, worldCreate, gameUpdate) {
-
-    
-    
-    var state = {}
-    
+], function(state, assetsLoader, worldCreate, gameUpdate) {
 
     var game = new Phaser.Game(1280, 704, Phaser.AUTO, 'ninja-game', {
         preload: function () {
             assetsLoader(game);
         },
         create: function() {
-            worldCreate(game, state);
+            worldCreate(game);
         }, 
         update: function() {
-            gameUpdate(game, state);
+            gameUpdate(game);
         }
     });
 

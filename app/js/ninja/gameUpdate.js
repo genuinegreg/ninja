@@ -1,14 +1,15 @@
 define(
 	[
-        'ninja/logic/physics',
-        'ninja/logic/controls'
+        'ninja/ninja_physic/ninja_physic',
+        'ninja/ninja_control/ninja_control',
+        'ninja/ninja_state/ninja_state',
     ],
-    function gameUpdateFactory(physics, controls) 
+    function gameUpdateFactory(physic, control, state) 
     {
        function gameUpdate(game, state) 
        {
-           physics(game, state);
-           controls(game, state);
+           physic(game, state);
+           control(game, state);
        }
 
        return gameUpdate;
