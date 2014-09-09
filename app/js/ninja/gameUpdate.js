@@ -1,7 +1,7 @@
 define(
 	[
-		'ninja/gameLogic/physics',
-    'ninja/gameLogic/controls'
+        'ninja/logic/physics',
+        'ninja/logic/controls'
     ],
     function gameUpdateFactory(physics, controls) 
     {
