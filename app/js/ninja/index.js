@@ -19,7 +19,6 @@ define([
         }
     });
 
-    _game = game;
     _state = state;
 
     

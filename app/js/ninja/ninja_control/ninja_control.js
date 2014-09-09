@@ -7,8 +7,6 @@ define(
         var highJump = false;
 
         function controls(game) {
-
-            var cursors = game.input.keyboard.createCursorKeys();
             
             state.players.forEach(function(player)
             {
@@ -22,7 +20,7 @@ define(
                 if ((player.body.touching.down ||
                     player.body.touching.left || 
                     player.body.touching.right )&& 
-                    (cursors.up.isDown)) {
+                    (player.cursors.up.isDown)) {
 
                     player.body.moveUp(400);
                     highJump = !highJump;
@@ -31,36 +29,24 @@ define(
 
 
                 if (player.body.touching.down) {
-                    if (cursors.left.isDown) {
+                    if (player.cursors.left.isDown) {
                         player.body.moveLeft(50);
                     }
-                    else if (cursors.right.isDown) {
+                    else if (player.cursors.right.isDown) {
                         player.body.moveRight(50);
                     }
                 }
                 else {
-                    if (cursors.left.isDown) {
+                    if (player.cursors.left.isDown) {
                         player.body.moveLeft(10);
                     }
-                    else if (cursors.right.isDown) {
+                    else if (player.cursors.right.isDown) {
                         player.body.moveRight(10);
                     }
                 }
-
-                /*
-                if (game.input.activePointer.isDown)
-                {
-                    sword.rotation = 0;
-                    sword.x = player.x + 10;
-                    sword.y = player.y - 25;
-                }
-                else
-                {
-                    sword.rotation = -50;
-                    sword.x = player.x + 10;
-                    sword.y = player.y - 25;
-                }
-                */
+                
+                player.sword.x = player.x + 10;
+                player.sword.y = player.y - 25;
                 
             });
 

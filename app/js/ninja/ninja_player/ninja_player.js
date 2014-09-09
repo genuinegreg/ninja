@@ -8,10 +8,11 @@ define(
     {
  
         
-        function Player()
+        function Player(x, y)
         {
-            var player = state.game.add.sprite(75, 100, 'player');
-            var sword = state.game.add.sprite(75, 100, 'sword');
+            var player = state.game.add.sprite(x, y, 'player');
+            player.sword = state.game.add.sprite(x, y, 'sword');
+            player.cursors = state.game.input.keyboard.createCursorKeys();
             
             state.maplayer = state.map.createLayer('ninja_layer');
             
@@ -20,6 +21,8 @@ define(
             player.body.bounce = 0;
             
             state.players.push(player);
+            
+            return player;
             
         }
  
@@ -35,7 +38,7 @@ define(
         state.players = [];
         
         return {
-            createPlayer:function(){return Player(); }
+            createPlayer : function(x, y){return Player(x, y); }
         };
     }
 );

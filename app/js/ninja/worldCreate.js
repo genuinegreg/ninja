@@ -28,7 +28,19 @@ define(
             }
             state.tiles = game.physics.ninja.convertTilemap(state.map, state.layer, slopMap);
             
-            player.createPlayer();
+            var player1 = player.createPlayer(75, 100);
+            
+            var player2 = player.createPlayer(100, 200);
+            
+            var Z = state.game.input.keyboard.addKey(Phaser.Keyboard.Z);
+            var S = state.game.input.keyboard.addKey(Phaser.Keyboard.S);
+            var D = state.game.input.keyboard.addKey(Phaser.Keyboard.D);
+            var Q = state.game.input.keyboard.addKey(Phaser.Keyboard.Q);
+            
+            player2.cursors.up = Z;
+            player2.cursors.down = S;
+            player2.cursors.left = Q;
+            player2.cursors.right = D;
         }
 
     return worldCreate;
