@@ -15,8 +15,8 @@ define(
             player.cursors = state.game.input.keyboard.createCursorKeys();
             
             state.maplayer = state.map.createLayer('ninja_layer');
-            
-            state.game.physics.ninja.enableAABB(player);
+
+            state.game.physics.p2.enable(player);
             
             player.body.bounce = 0;
             

@@ -9,8 +9,7 @@ define(
 
         function worldCreate(game) {
             game.stage.backgroundColor = 0x000000;
-            game.physics.startSystem(Phaser.Physics.NINJA);
-            game.physics.ninja.gravity = 0.5;
+            game.physics.startSystem(Phaser.Physics.P2JS);
             game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
             
             state.game = game;
@@ -22,12 +21,23 @@ define(
             //  The second parameter maps this name to the Phaser.Cache key 'tiles'
             state.map.addTilesetImage('ninja', 'tiles');
 
-            var slopMap = [];
-            for (var i = 1; i<= 34; i++) {
-                slopMap[i] = i-1;   
-            }
-            state.tiles = game.physics.ninja.convertTilemap(state.map, state.layer, slopMap);
-            
+
+            console.log(state.map);
+
+
+            state.tiles = game.physics.p2.convertCollisionObjects(state.map, 'colision');
+
+
+            state.game.physics.p2.restitution = 0.5;
+            state.game.physics.p2.gravity.y = 300;
+
+
+
+
+
+
+
+
             var player1 = player.createPlayer(75, 100);
             
             var player2 = player.createPlayer(100, 200);
