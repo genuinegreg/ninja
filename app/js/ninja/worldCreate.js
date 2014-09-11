@@ -28,13 +28,8 @@ define(
             state.tiles = game.physics.p2.convertCollisionObjects(state.map, 'colision');
 
 
-            state.game.physics.p2.restitution = 0.5;
-            state.game.physics.p2.gravity.y = 300;
-
-
-
-
-
+            state.game.physics.p2.restitution = 0;
+            state.game.physics.p2.gravity.y = 800;
 
 
 

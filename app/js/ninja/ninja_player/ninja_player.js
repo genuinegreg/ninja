@@ -14,11 +14,15 @@ define(
             player.sword = state.game.add.sprite(x, y, 'sword');
             player.cursors = state.game.input.keyboard.createCursorKeys();
             
+            
+            
+            
             state.maplayer = state.map.createLayer('ninja_layer');
 
             state.game.physics.p2.enable(player);
             
-            player.body.bounce = 0;
+            player.smoothed = false;
+            player.body.fixedRotation = true;
             
             state.players.push(player);
             
