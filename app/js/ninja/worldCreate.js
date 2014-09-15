@@ -29,12 +29,9 @@ define(
 
 
             state.game.physics.p2.restitution = 0;
-            state.game.physics.p2.gravity.y = 800;
-
-
+            state.game.physics.p2.gravity.y = 1000;
 
             var player1 = player.createPlayer(75, 100);
-            
             var player2 = player.createPlayer(100, 200);
             
             state.players.push(player1);

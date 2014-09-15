@@ -11,16 +11,20 @@ define(
             state.players.forEach(function(player)
             {
                 if (player.cursors.up.isDown && player.checkJump()) {
-                    player.sprite.body.moveUp(300);
-                    highJump = !highJump;
+                    player.moveUp(300);
                 }
 
 
                 if (player.cursors.left.isDown) {
-                    player.sprite.body.moveLeft(200);
+                    player.moveLeft(200);
                 }
                 else if (player.cursors.right.isDown) {
-                    player.sprite.body.moveRight(200);
+                    player.moveRight(200);
+                }
+                
+                keyI = state.game.input.keyboard.addKey(Phaser.Keyboard.I);
+                if (keyI.isDown) {
+                    player.fire();   
                 }
                 
                 player.sword.x = player.x + 10;

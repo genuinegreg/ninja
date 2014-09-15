@@ -2,33 +2,48 @@ define(
     
 	[
         'ninja/ninja_state/ninja_state',
-        'ninja/ninja_physic/ninja_physic'
+        'ninja/ninja_bullet/ninja_bullet'
     ],
-    function (state, ninja_physic) 
+    function (state, bullet) 
     {
+        state.players = [];
+        
+        var fireRate = 1000;
         
         function Player(x, y)
         {
             this.sprite = state.game.add.sprite(x, y, 'player');
             this.sword = state.game.add.sprite(x, y, 'sword');
-            this.cursors = state.game.input.keyboard.createCursorKeys();            
+            this.cursors = state.game.input.keyboard.createCursorKeys();
             
             state.maplayer = state.map.createLayer('ninja_layer');
 
             state.game.physics.p2.enable(this.sprite);
-            
             this.sprite.smoothed = false;
             this.sprite.body.fixedRotation = true;
+            this.sprite.body.data.gravityScale = 1;
             
+            this.nextFire = 0;
         }
  
-        Player.prototype.methode1 = function() {
- 
+        Player.prototype.moveRight = function(speed) {
+            this.sprite.body.moveRight(speed);
         }
  
- 
-        Player.prototype.methode2 = function() {
- 
+        Player.prototype.moveLeft = function(speed) {
+            this.sprite.body.moveLeft(speed);
+        }
+        
+        Player.prototype.moveUp = function(speed) {
+            this.sprite.body.moveUp(speed);
+        }
+        
+        Player.prototype.fire = function() {
+            if (state.game.time.now > this.nextFire)
+            {
+                this.nextFire = state.game.time.now + this.fireRate;
+                bullet.createBullet(this.sprite.body.x, this.sprite.body.y);
+            }
         }
         
         Player.prototype.checkJump = function() {
@@ -51,7 +66,6 @@ define(
             return result;            
         }
         
-        state.players = [];
         
         return {
             createPlayer : function(x, y){return new Player(x, y); }
