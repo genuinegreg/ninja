@@ -24,6 +24,8 @@ define(
             this.sprite.body.data.gravityScale = 1;
             
             this.nextFire = 0;
+            
+            state.players.push(this);
         }
  
         Player.prototype.moveRight = function(speed) {
@@ -39,10 +41,11 @@ define(
         }
         
         Player.prototype.fire = function() {
+            
             if (state.game.time.now > this.nextFire)
             {
-                this.nextFire = state.game.time.now + this.fireRate;
-                bullet.createBullet(this.sprite.body.x, this.sprite.body.y);
+                this.nextFire = state.game.time.now + fireRate;
+                var b = bullet.createBullet(this.sprite.body.x + 20, this.sprite.body.y, 10, 0);
             }
         }
         
