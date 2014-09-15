@@ -10,18 +10,17 @@ define(
             
             state.players.forEach(function(player)
             {
-                
-                if (player.cursors.up.isDown) {
-                    player.body.moveUp(300);
+                if (player.cursors.up.isDown && player.checkJump()) {
+                    player.sprite.body.moveUp(300);
                     highJump = !highJump;
                 }
 
 
                 if (player.cursors.left.isDown) {
-                    player.body.moveLeft(200);
+                    player.sprite.body.moveLeft(200);
                 }
                 else if (player.cursors.right.isDown) {
-                    player.body.moveRight(200);
+                    player.sprite.body.moveRight(200);
                 }
                 
                 player.sword.x = player.x + 10;

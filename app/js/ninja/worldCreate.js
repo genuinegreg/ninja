@@ -37,6 +37,9 @@ define(
             
             var player2 = player.createPlayer(100, 200);
             
+            state.players.push(player1);
+            state.players.push(player2);
+            
             var Z = state.game.input.keyboard.addKey(Phaser.Keyboard.Z);
             var S = state.game.input.keyboard.addKey(Phaser.Keyboard.S);
             var D = state.game.input.keyboard.addKey(Phaser.Keyboard.D);
