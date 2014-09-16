@@ -59,7 +59,7 @@ define(
             if (state.game.time.now > this.nextFire)
             {
                 this.nextFire = state.game.time.now + fireRate;
-                var b = bullet.createBullet(this.sprite.body.x + 20, this.sprite.body.y, 10, 0);
+                var b = bullet.createBullet(this.sprite.body.x + 20, this.sprite.body.y);
             }
         }
         

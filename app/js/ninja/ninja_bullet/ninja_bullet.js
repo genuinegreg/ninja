@@ -9,7 +9,7 @@ define(
         
         state.collisionGroups.bullet = state.game.physics.p2.createCollisionGroup();
         
-        function Bullet(x, y, dx, dy)
+        function Bullet(x, y)
         {
             this.sprite = state.game.add.sprite(x, y, 'bullet');
             
@@ -21,16 +21,12 @@ define(
             
             this.sprite.body.collides(state.collisionGroups.player);
             
-            this.dx = dx;
-            this.dy = dy;
-            
             state.bullets.push(this);
         }
         
         Bullet.prototype.physic = function()
         {
             this.sprite.body.moveRight(200);
-            
         }
         
         return {
