@@ -14,7 +14,7 @@ define(
             state.game.physics.p2.enable(this.sprite);
             this.sprite.smoothed = false;
             this.sprite.body.fixedRotation = true;
-            this.sprite.body.data.gravityScale = 1;
+            this.sprite.body.data.gravityScale = 0;
             
             this.dx = dx;
             this.dy = dy;
