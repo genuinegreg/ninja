@@ -14,7 +14,10 @@ define(
         {
             this.sprite = state.game.add.sprite(x, y, 'player');
             this.sword = state.game.add.sprite(x, y, 'sword');
+            
             this.cursors = state.game.input.keyboard.createCursorKeys();
+            NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
+            this.cursors.fire = NUMPAD_0;
             
             state.maplayer = state.map.createLayer('ninja_layer');
 

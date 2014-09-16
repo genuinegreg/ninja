@@ -14,7 +14,6 @@ define(
                     player.moveUp(300);
                 }
 
-
                 if (player.cursors.left.isDown) {
                     player.moveLeft(200);
                 }
@@ -22,8 +21,7 @@ define(
                     player.moveRight(200);
                 }
                 
-                keyI = state.game.input.keyboard.addKey(Phaser.Keyboard.I);
-                if (keyI.isDown) {
+                if (player.cursors.fire.isDown) {
                     player.fire();   
                 }
                 
