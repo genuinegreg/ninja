@@ -6,10 +6,14 @@ define(
     function physicsFactory(state) {
 
         function physics(game) {
-            state.bullets.forEach(function(bullet)
+            //TODO, that's bullshit
+            if(state.hasOwnProperty('bullets'))
             {
-                bullet.physic();
-            });
+                state.bullets.forEach(function(bullet)
+                {
+                    bullet.physic();
+                });
+            }
         }
 
         return physics;

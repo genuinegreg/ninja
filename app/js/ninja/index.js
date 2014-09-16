@@ -4,7 +4,6 @@ define([
     'ninja/worldCreate',
     'ninja/gameUpdate',
     'vendors/phaser',
-    'ninja/ninja_player/ninja_player',
 ], function(state, assetsLoader, worldCreate, gameUpdate) {
 
     var game = new Phaser.Game(1280, 704, Phaser.AUTO, 'ninja-game', {

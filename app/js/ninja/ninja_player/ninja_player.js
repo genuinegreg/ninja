@@ -6,12 +6,21 @@ define(
     ],
     function (state, bullet) 
     {
+        
         state.players = [];
+        state.collisionGroups.player = state.game.physics.p2.createCollisionGroup();
         
         var fireRate = 1000;
         
+        function die(player)
+        {
+            console.log("Im fuckin dead");    
+        }
+        
         function Player(x, y)
         {
+            this.nextFire = 0;
+            
             this.sprite = state.game.add.sprite(x, y, 'player');
             this.sword = state.game.add.sprite(x, y, 'sword');
             
@@ -25,8 +34,10 @@ define(
             this.sprite.smoothed = false;
             this.sprite.body.fixedRotation = true;
             this.sprite.body.data.gravityScale = 1;
+            this.sprite.body.setCollisionGroup(state.collisionGroups.player);
+            this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
             
-            this.nextFire = 0;
+            this.sprite.body.collides(state.collisionGroups.bullet, die, this);
             
             state.players.push(this);
         }
