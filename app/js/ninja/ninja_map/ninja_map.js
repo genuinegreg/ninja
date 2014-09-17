@@ -16,6 +16,7 @@ define(
             tiles.forEach(function(tile)
             {
                 tile.setCollisionGroup(mapCollisionGroup);
+                // TODO This should not be here
                 tile.collides([state.collisionGroups.player, state.collisionGroups.bullet]);
             });
             state.collisionGroups.map = mapCollisionGroup;

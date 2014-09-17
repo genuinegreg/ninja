@@ -11,6 +11,9 @@ define(
         
         function collideWithMap (body, shapeA, shapeB, equation) {
             console.log(body);
+            console.log(shapeA);
+            console.log(shapeB);
+            console.log(equation);
         }
         
         function Bullet(x, y)
@@ -22,6 +25,7 @@ define(
             this.sprite.body.fixedRotation = true;
             this.sprite.body.data.gravityScale = 0;
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
+            this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
             this.sprite.body.moveRight(1000);
             this.sprite.body.onBeginContact.add(collideWithMap, this);
             

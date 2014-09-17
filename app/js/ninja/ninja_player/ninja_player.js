@@ -26,7 +26,7 @@ define(
             this.sprite.body.fixedRotation = true;
             this.sprite.body.data.gravityScale = 1;
             this.sprite.body.setCollisionGroup(state.collisionGroups.player);
-            this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
+            this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map, state.collisionGroups.bullet]);
             
             this.cursors = state.game.input.keyboard.createCursorKeys();
             NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
