@@ -9,6 +9,10 @@ define(
         
         state.collisionGroups.bullet = state.game.physics.p2.createCollisionGroup();
         
+        function collideWithMap (body, shapeA, shapeB, equation) {
+            console.log(body);
+        }
+        
         function Bullet(x, y)
         {
             this.sprite = state.game.add.sprite(x, y, 'bullet');
@@ -18,16 +22,10 @@ define(
             this.sprite.body.fixedRotation = true;
             this.sprite.body.data.gravityScale = 0;
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
-            
-            this.sprite.body.collides(state.collisionGroups.player);
             this.sprite.body.moveRight(1000);
+            this.sprite.body.onBeginContact.add(collideWithMap, this);
             
             state.bullets.push(this);
-        }
-        
-        Bullet.prototype.physic = function()
-        {
-            //this.sprite.body.moveRight(200);
         }
         
         return {

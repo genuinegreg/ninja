@@ -12,11 +12,6 @@ define(
         
         var fireRate = 1000;
         
-        function die(player)
-        {
-            console.log("Im fuckin dead");    
-        }
-        
         function Player(x, y)
         {
             this.nextFire = 0;
@@ -32,8 +27,6 @@ define(
             this.sprite.body.data.gravityScale = 1;
             this.sprite.body.setCollisionGroup(state.collisionGroups.player);
             this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
-            
-            this.sprite.body.collides(state.collisionGroups.bullet, die, this);
             
             this.cursors = state.game.input.keyboard.createCursorKeys();
             NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
