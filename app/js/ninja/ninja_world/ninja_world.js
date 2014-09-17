@@ -24,7 +24,7 @@ define(
             player2.cursors.down = S;
             player2.cursors.left = Q;
             player2.cursors.right = D;
-            player2.cursors.fire = I;
+            player2.cursors.action1 = I;
         }
         
         return {

@@ -20,13 +20,14 @@ define(
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
             
             this.sprite.body.collides(state.collisionGroups.player);
+            this.sprite.body.moveRight(1000);
             
             state.bullets.push(this);
         }
         
         Bullet.prototype.physic = function()
         {
-            this.sprite.body.moveRight(200);
+            //this.sprite.body.moveRight(200);
         }
         
         return {

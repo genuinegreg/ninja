@@ -24,10 +24,6 @@ define(
             this.sprite = state.game.add.sprite(x, y, 'player');
             this.sword = state.game.add.sprite(x, y, 'sword');
             
-            this.cursors = state.game.input.keyboard.createCursorKeys();
-            NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
-            this.cursors.fire = NUMPAD_0;
-            
             state.maplayer = state.map.createLayer('ninja_layer');
 
             state.game.physics.p2.enable(this.sprite);
@@ -38,6 +34,12 @@ define(
             this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
             
             this.sprite.body.collides(state.collisionGroups.bullet, die, this);
+            
+            this.cursors = state.game.input.keyboard.createCursorKeys();
+            NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
+            this.cursors.action1 = NUMPAD_0;
+            NUMPAD_DECIMAL = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_DECIMAL);
+            this.cursors.action2 = NUMPAD_DECIMAL;
             
             state.players.push(this);
         }

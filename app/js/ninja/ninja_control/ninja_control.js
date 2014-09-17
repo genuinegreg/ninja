@@ -13,17 +13,17 @@ define(
                 state.players.forEach(function(player)
                 {
                     if (player.cursors.up.isDown && player.checkJump()) {
-                        player.moveUp(300);
+                        player.moveUp(500);
                     }
 
                     if (player.cursors.left.isDown) {
-                        player.moveLeft(200);
+                        player.moveLeft(300);
                     }
                     else if (player.cursors.right.isDown) {
-                        player.moveRight(200);
+                        player.moveRight(300);
                     }
 
-                    if (player.cursors.fire.isDown) {
+                    if (player.cursors.action1.isDown) {
                         player.fire();   
                     }
 
