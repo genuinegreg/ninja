@@ -19,6 +19,7 @@ define(
         function Bullet(x, y)
         {
             this.sprite = state.game.add.sprite(x, y, 'bullet');
+            this.sprite.name = 'bullet';
             
             state.game.physics.p2.enable(this.sprite);
             this.sprite.smoothed = false;
@@ -27,7 +28,7 @@ define(
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
             this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
             this.sprite.body.moveRight(1000);
-            this.sprite.body.onBeginContact.add(collideWithMap, this);
+            //this.sprite.body.onBeginContact.add(collideWithMap, this);
             
             state.bullets.push(this);
         }
