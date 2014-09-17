@@ -4,6 +4,9 @@ define(
     ],
     function()
     {
-        return {};
+        return {
+            collisionGroups : {}
+        
+        };
     }
 );

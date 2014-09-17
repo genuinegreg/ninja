@@ -8,17 +8,18 @@ define(
         
         function Map()
         {
-            state.map = game.add.tilemap('map');
+            state.map = state.game.add.tilemap('map');
             state.map.addTilesetImage('ninja', 'tiles');
 
-            state.collisionGroups = {};
-            var mapCollisionGroup = game.physics.p2.createCollisionGroup();
-            var tiles = game.physics.p2.convertCollisionObjects(state.map, 'colision');
+            var mapCollisionGroup = state.game.physics.p2.createCollisionGroup();
+            var tiles = state.game.physics.p2.convertCollisionObjects(state.map, 'colision');
             tiles.forEach(function(tile)
             {
                 tile.setCollisionGroup(mapCollisionGroup);
+                tile.collides([state.collisionGroups.player]);
             });
             state.collisionGroups.map = mapCollisionGroup;
+            
             
             state.game.physics.p2.restitution = 0;
             state.game.physics.p2.gravity.y = 1000;
