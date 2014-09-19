@@ -1,19 +1,21 @@
 define(
     
 	[
-        'ninja/ninja_state/ninja_state'
+        'ninja/ninja_state/ninja_state',
+        'ninja/ninja_physic/ninja_physic'
     ],
-    function (state) 
+    function (state, physic) 
     {
         state.bullets = [];
         
         state.collisionGroups.bullet = state.game.physics.p2.createCollisionGroup();
         
-        function collideWithMap (body, shapeA, shapeB, equation) {
-            console.log(body);
-            console.log(shapeA);
-            console.log(shapeB);
-            console.log(equation);
+        function truc(bulletSprite)
+        {
+            state.players.forEach(function(player)
+            {
+                console.log(bulletSprite.overlap(player.sprite));
+            });
         }
         
         function Bullet(x, y)
@@ -26,12 +28,15 @@ define(
             this.sprite.body.fixedRotation = true;
             this.sprite.body.data.gravityScale = 0;
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
-            this.sprite.body.collides([state.collisionGroups.player, state.collisionGroups.map]);
+            this.sprite.body.collides([state.collisionGroups.map]);
             this.sprite.body.moveRight(1000);
-            //this.sprite.body.onBeginContact.add(collideWithMap, this);
+            
+            physic.physic(truc, this.sprite);
             
             state.bullets.push(this);
         }
+        
+        
         
         return {
             createBullet : function(x, y, dx, dy){return new Bullet(x, y); }

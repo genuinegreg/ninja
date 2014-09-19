@@ -5,11 +5,27 @@ define(
     
     function physicsFactory(state) {
 
-        function physics(game) {
-            
+        var callbacks = [];
+        
+        function update()
+        {
+            if(callbacks.length > 0)
+            {
+                for (i = 0; i < callbacks.length; i++) {
+                    callbacks[i].fn.call(null, callbacks[i].args);
+                }
+            }
+        }
+        
+        function physic(fn, args)
+        {
+            callbacks.push({fn : fn, args : args});
         }
 
-        return physics;
+        return {
+            update : update,
+            physic : physic
+        };
 
     }
 )

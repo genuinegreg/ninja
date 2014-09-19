@@ -8,7 +8,7 @@ define(
     {
        function gameUpdate(game, state) 
        {
-           physic(game, state);
+           physic.update(game, state);
            control(game, state);
        }
 

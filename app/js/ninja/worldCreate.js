@@ -18,6 +18,8 @@ define(
             game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
             game.stage.disableVisibilityChange = true;
             
+            require(['ninja/ninja_phaser/ninja_phaser']);
+            
             require(['ninja/ninja_world/ninja_world'], function(world)
             {
                 var world = world.createWorld();
