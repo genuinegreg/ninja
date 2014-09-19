@@ -8,9 +8,9 @@ define(
 
         function controls(game) {
             //TODO : That's bullshit
-            if(state.hasOwnProperty('players'))
+            if(state.entities.hasOwnProperty('players'))
             {
-                state.players.forEach(function(player)
+                state.entities.players.forEach(function(player)
                 {
                     if (player.cursors.up.isDown && player.checkJump()) {
                         player.moveUp(500);
@@ -26,10 +26,6 @@ define(
                     if (player.cursors.action1.isDown) {
                         player.fire();   
                     }
-
-                    player.sword.x = player.x + 10;
-                    player.sword.y = player.y - 25;
-
                 });
             }
         }

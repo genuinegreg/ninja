@@ -6,16 +6,21 @@ define(
     ],
     function (state, physic) 
     {
-        state.bullets = [];
+        state.entities.bullets = [];
         
         state.collisionGroups.bullet = state.game.physics.p2.createCollisionGroup();
         
-        function truc(bulletSprite)
+        function update(arg)
         {
-            state.players.forEach(function(player)
-            {
-                console.log(bulletSprite.overlap(player.sprite));
-            });
+            for (i = 0; i <  state.entities.players.length; i++) {
+                
+                var player =  state.entities.players[i];
+                
+                if(this.sprite.overlap(player.sprite))
+                {
+                    player.die();   
+                }
+            }
         }
         
         function Bullet(x, y)
@@ -31,9 +36,9 @@ define(
             this.sprite.body.collides([state.collisionGroups.map]);
             this.sprite.body.moveRight(1000);
             
-            physic.physic(truc, this.sprite);
+            physic.physic(update, this);
             
-            state.bullets.push(this);
+            state.entities.bullets.push(this);
         }
         
         

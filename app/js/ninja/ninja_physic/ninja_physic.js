@@ -13,14 +13,14 @@ define(
             {
                 for (i = 0; i < callbacks.length; i++) {
                     //TODO is it ok?
-                    callbacks[i].fn.call(null, callbacks[i].args);
+                    callbacks[i].fn.call(callbacks[i].context, callbacks[i].args);
                 }
             }
         }
         
-        function physic(fn, args)
+        function physic(fn, context, args)
         {
-            callbacks.push({fn : fn, args : args});
+            callbacks.push({fn : fn, context : context, args : args});
         }
 
         return {

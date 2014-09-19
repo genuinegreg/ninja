@@ -7,7 +7,7 @@ define(
     function (state, bullet) 
     {
         
-        state.players = [];
+        state.entities.players = [];
         state.collisionGroups.player = state.game.physics.p2.createCollisionGroup();
         
         var fireRate = 1000;
@@ -34,7 +34,7 @@ define(
             NUMPAD_DECIMAL = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_DECIMAL);
             this.cursors.action2 = NUMPAD_DECIMAL;
             
-            state.players.push(this);
+            state.entities.players.push(this);
         }
  
         Player.prototype.moveRight = function(speed) {
@@ -76,6 +76,10 @@ define(
             }
     
             return result;            
+        }
+        
+        Player.prototype.die = function() {
+             this.sprite.kill();
         }
         
         

@@ -5,7 +5,8 @@ define(
     function()
     {
         return {
-            collisionGroups : {}
+            collisionGroups : {},
+            entities : {}
         
         };
     }
