@@ -12,6 +12,7 @@ define(
             if(callbacks.length > 0)
             {
                 for (i = 0; i < callbacks.length; i++) {
+                    //TODO is it ok?
                     callbacks[i].fn.call(null, callbacks[i].args);
                 }
             }
