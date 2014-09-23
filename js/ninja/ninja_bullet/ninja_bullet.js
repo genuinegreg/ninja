@@ -1,27 +1,13 @@
 define(
     
 	[
-        'ninja/ninja_state/ninja_state',
-        'ninja/ninja_physic/ninja_physic'
+        'ninja/ninja_state/ninja_state'
     ],
-    function (state, physic) 
+    function (state) 
     {
         state.entities.bullets = [];
         
         state.collisionGroups.bullet = state.game.physics.p2.createCollisionGroup();
-        
-        function update(arg)
-        {
-            for (i = 0; i <  state.entities.players.length; i++) {
-                
-                var player =  state.entities.players[i];
-                
-                if(this.sprite.overlap(player.sprite))
-                {
-                    player.die();   
-                }
-            }
-        }
         
         function Bullet(x, y)
         {
@@ -35,8 +21,6 @@ define(
             this.sprite.body.setCollisionGroup(state.collisionGroups.bullet);
             this.sprite.body.collides([state.collisionGroups.map]);
             this.sprite.body.moveRight(1000);
-            
-            physic.physic(update, this);
             
             state.entities.bullets.push(this);
         }
