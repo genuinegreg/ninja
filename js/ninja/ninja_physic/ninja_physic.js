@@ -5,26 +5,27 @@ define(
     
     function physicsFactory(state) {
 
+        var callbacks = [];
+        
         function update()
         {
-            if(!state.entities.players || !state.entities.bullets)
+            if(callbacks.length > 0)
             {
-                return;
+                for (i = 0; i < callbacks.length; i++) {
+                    //TODO is it ok?
+                    callbacks[i].fn.call(callbacks[i].context, callbacks[i].args);
+                }
             }
-            state.entities.players.forEach(function(player)
-            {
-                state.entities.bullets.forEach(function(bullet)
-                {
-                    if(player.sprite.overlap(bullet.sprite))
-                    {
-                        player.die();
-                    }
-                });
-            });
+        }
+        
+        function physic(fn, context, args)
+        {
+            callbacks.push({fn : fn, context : context, args : args});
         }
 
         return {
-            update : update
+            update : update,
+            physic : physic
         };
 
     }

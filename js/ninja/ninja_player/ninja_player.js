@@ -2,15 +2,22 @@ define(
     
 	[
         'ninja/ninja_state/ninja_state',
-        'ninja/ninja_bullet/ninja_bullet'
+        'ninja/ninja_bullet/ninja_bullet',
+        'ninja/ninja_physic/ninja_physic'
     ],
-    function (state, bullet) 
+    function (state, bullet, physic) 
     {
         
         state.entities.players = [];
         state.collisionGroups.player = state.game.physics.p2.createCollisionGroup();
         
         var fireRate = 1000;
+        
+        function update()
+        {
+            this.sword.x = this.sprite.body.x + 15;
+            this.sword.y = this.sprite.body.y - 30;
+        }
         
         function Player(x, y)
         {
@@ -27,12 +34,15 @@ define(
             this.sprite.body.data.gravityScale = 1;
             this.sprite.body.setCollisionGroup(state.collisionGroups.player);
             this.sprite.body.collides([state.collisionGroups.map]);
+            this.sprite.body.velocity.x = 0;
             
             this.cursors = state.game.input.keyboard.createCursorKeys();
             NUMPAD_0 = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
             this.cursors.action1 = NUMPAD_0;
             NUMPAD_DECIMAL = state.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_DECIMAL);
             this.cursors.action2 = NUMPAD_DECIMAL;
+            
+            physic.physic(update, this);
             
             state.entities.players.push(this);
         }
